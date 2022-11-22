@@ -1,10 +1,17 @@
 from redis_om import get_redis_connection,JsonModel,EmbeddedJsonModel,Field,Migrator
 import datetime
+import os
+from dotenv import load_dotenv
+
+
+
+
+load_dotenv()
 
 redis = get_redis_connection(
-    host = "redis-15502.c258.us-east-1-4.ec2.cloud.redislabs.com",
-    port = 15502,
-    password = "EJSzsC24rap3y1UaUnyPhRiALpezG41R",
+    host = os.environ.get("HOST"),
+    port = os.environ.get("PORT"),
+    password = os.environ.get("PASSWORD"),
     decode_responses = True,
 )
 
